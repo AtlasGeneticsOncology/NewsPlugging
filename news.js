@@ -1,4 +1,4 @@
-$('#myTable').DataTable( {
+$('#NewsTable').DataTable( {
     ajax: {
         url : 'ajax/get-news-datatable.php',
         type : 'GET',
