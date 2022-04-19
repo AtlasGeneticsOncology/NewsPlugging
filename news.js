@@ -18,6 +18,7 @@ $('#NewsTable').DataTable( {
         {data : "content"},
         {data : "created_at"},
         {data : "updated_at"},
-        {data : "idUser"}
+        {data : "idUser"},
+        {data : "actions"}
     ]
 });
