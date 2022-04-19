@@ -36,8 +36,10 @@ $(document).ready(function() {
 $('#savechangesButton').click(function(){
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
+    var content=$($("#summernote").summernote("code")).text();
+    console.log(content);
     $.ajax({
-        url : 'ajax/set-news-datatable.php?title='+title+'&description='+description,
+        url : 'ajax/set-news-datatable.php?title='+title+'&description='+description+'&content='+content,
         type : 'GET',
         dataType : 'json',
         dataSrc:"",
@@ -48,5 +50,11 @@ $('#savechangesButton').click(function(){
             console.log("Peticion realizada");
         }
     })
+    $('#newtitle').val('');
+    $('#newdescription').val('');
+    // $('#summernoteText').summernote('');
+    $('#summernoteText').summernote('code','');
+    $('#NewsTable').DataTable().ajax.reload();
+
 
 })
