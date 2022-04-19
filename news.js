@@ -22,3 +22,14 @@ $('#NewsTable').DataTable( {
         {data : "actions"}
     ]
 });
+
+$(document).ready(function() {
+    $('#summernote').summernote({
+        placeholder: 'Enter content here...',
+        tabsize: 2,
+        height: 200,
+        dialogsInBody: true,
+        tooltip: false
+    });
+});
+
