@@ -33,3 +33,20 @@ $(document).ready(function() {
     });
 });
 
+$('#savechangesButton').click(function(){
+    var title=$('#newtitle').val();
+    var description=$('#newdescription').val();
+    $.ajax({
+        url : 'ajax/set-news-datatable.php?title='+title+'&description='+description,
+        type : 'GET',
+        dataType : 'json',
+        dataSrc:"",
+        error : function (data, error){
+            console.log("Problema");
+        },
+        complete :  function (data){
+            console.log("Peticion realizada");
+        }
+    })
+
+})

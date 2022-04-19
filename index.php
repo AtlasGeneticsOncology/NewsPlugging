@@ -53,11 +53,11 @@
                     <form>
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" class="form-control" placeholder="Enter title here...">
+                            <input type="text" class="form-control" placeholder="Enter title here..." id="newtitle">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter description here..."></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Enter description here..." id="newdescription"></textarea>
                         </div>
                         <div id="Content">
                             <label>Content</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <input type="submit" class="btn btn-primary" id="savechangesButton" value="Save changes"></input>
                 </div>
             </div>
         </div>
