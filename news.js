@@ -1,3 +1,4 @@
+// DataTable function
 $('#NewsTable').DataTable( {
     ajax: {
         url : 'ajax/get-news-datatable.php',
@@ -12,19 +13,13 @@ $('#NewsTable').DataTable( {
         }
     },
     columns: [
-        {data : "idNew"},
         {data : "title"},
-        {data : "description"},
-        {data : "content"},
-        {data : "created_at"},
-        {data : "updated_at"},
-        {data : "idUser"},
         {data : "actions"}
     ]
 });
-
+// Summernote function initial
 $(document).ready(function() {
-    $('#summernote').summernote({
+    $('.summernote').summernote({
         placeholder: 'Enter content here...',
         tabsize: 2,
         height: 200,
@@ -33,10 +28,11 @@ $(document).ready(function() {
     });
 });
 
+// Create New function
 $('#savechangesButton').click(function(){
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
-    var content=$($("#summernote").summernote("code")).text();
+    var content=$('#summernote').summernote('code');
     console.log(content);
     $.ajax({
         url : 'ajax/set-news-datatable.php?title='+title+'&description='+description+'&content='+content,
@@ -50,11 +46,12 @@ $('#savechangesButton').click(function(){
             console.log("Peticion realizada");
         }
     })
+    $('#CreateNewModal').modal('hide');
     $('#newtitle').val('');
     $('#newdescription').val('');
-    // $('#summernoteText').summernote('');
-    $('#summernoteText').summernote('code','');
     $('#NewsTable').DataTable().ajax.reload();
+});
 
+$('#editnewButton').click(function(){
 
 })

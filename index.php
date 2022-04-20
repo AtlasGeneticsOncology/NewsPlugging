@@ -18,7 +18,7 @@
 
     
 </head>
-<body onload="load()">
+<body>
 
     <!-- Table News -->
     <div id="table-container">
@@ -26,13 +26,7 @@
         <table id="NewsTable" class="display table table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>idNew</th>
                     <th>title</th>
-                    <th>description</th>
-                    <th>content</th>
-                    <th>created_at</th>
-                    <th>updated_at</th>
-                    <th>idUser</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -50,7 +44,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="allform">
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" class="form-control" placeholder="Enter title here..." id="newtitle">
@@ -61,7 +55,41 @@
                         </div>
                         <div id="Content">
                             <label>Content</label>
-                            <div id="summernote"></div>
+                            <div class="summernote"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" id="savechangesButton" value="Save changes"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit New Modal -->
+    <div class="modal fade" id="EditNewModal" tabindex="-1" role="dialog" aria-labelledby="EditNewModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle">Edit New</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="allform">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" class="form-control" placeholder="Enter title here..." id="newtitle">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter description here..." id="newdescription"></textarea>
+                        </div>
+                        <div id="ContentEdit">
+                            <label>Content</label>
+                            <div class="summernote"></div>
                         </div>
                     </form>
                 </div>
