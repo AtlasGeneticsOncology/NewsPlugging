@@ -33,7 +33,6 @@ $('#savechangesButton').click(function(){
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
     var content=$('#newcontent').summernote('code');
-    console.log(content);
     $.ajax({
         url : 'ajax/set-news-datatable.php?title='+title+'&description='+description+'&content='+content,
         type : 'GET',
@@ -53,6 +52,26 @@ $('#savechangesButton').click(function(){
 });
 
 // Edit New function
-$('#editnewButton').click(function(){
-
-})
+$(document).ready(function(){
+    $('body').on('click', '.dropdown-menu a', function(){
+      editnewnum=$(this).attr('editnewnum');
+      if(editnewnum==undefined){
+         return;
+        }
+        else{
+            $.ajax({
+                url : 'ajax/get-news-datatable.php?idNew='+editnewnum,
+                type : 'GET',
+                dataType : 'json',
+                dataSrc:"",
+                error : function (data, error){
+                    console.log("Problema");
+                },
+                complete :  function (data){
+                    console.log("Peticion realizada");
+                }
+            }) 
+            console.log(data.oldtitle);
+      }
+    })
+  })
