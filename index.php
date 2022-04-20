@@ -55,7 +55,7 @@
                         </div>
                         <div id="Content">
                             <label>Content</label>
-                            <div class="summernote"></div>
+                            <div class="summernote" id="newcontent"></div>
                         </div>
                     </form>
                 </div>
@@ -81,21 +81,21 @@
                     <form id="allform">
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" class="form-control" placeholder="Enter title here..." id="newtitle">
+                            <input type="text" class="form-control" placeholder="Enter title here..." id="editnewtitle">
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter description here..." id="newdescription"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Enter description here..." id="editnewdescription"></textarea>
                         </div>
                         <div id="ContentEdit">
                             <label>Content</label>
-                            <div class="summernote"></div>
+                            <div class="summernote" id="editnewcontent"></div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" id="savechangesButton" value="Save changes"></input>
+                    <input type="submit" class="btn btn-primary" id="editchangesButton" value="Save changes"></input>
                 </div>
             </div>
         </div>

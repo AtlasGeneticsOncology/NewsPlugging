@@ -32,7 +32,7 @@ $(document).ready(function() {
 $('#savechangesButton').click(function(){
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
-    var content=$('#summernote').summernote('code');
+    var content=$('#newcontent').summernote('code');
     console.log(content);
     $.ajax({
         url : 'ajax/set-news-datatable.php?title='+title+'&description='+description+'&content='+content,
@@ -52,6 +52,7 @@ $('#savechangesButton').click(function(){
     $('#NewsTable').DataTable().ajax.reload();
 });
 
+// Edit New function
 $('#editnewButton').click(function(){
 
 })
