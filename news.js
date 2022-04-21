@@ -6,10 +6,7 @@ $('#NewsTable').DataTable( {
         dataType : 'json',
         dataSrc:"",
         error : function (data, error){
-            console.log("Problema");
-        },
-        complete :  function (data){
-            console.log("Peticion realizada");
+            console.log("Error Datatable");
         }
     },
     columns: [
@@ -17,6 +14,7 @@ $('#NewsTable').DataTable( {
         {data : "actions"}
     ]
 });
+
 // Summernote function initial
 $(document).ready(function() {
     $('.summernote').summernote({
@@ -30,6 +28,7 @@ $(document).ready(function() {
 
 // Create New function
 $('#savechangesButton').click(function(){
+    // Inputs values
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
     var content=$('#newcontent').summernote('code');
@@ -38,13 +37,11 @@ $('#savechangesButton').click(function(){
         type : 'GET',
         dataType : 'json',
         dataSrc:"",
-        error : function (data, error){
-            console.log("Problema");
-        },
-        complete :  function (data){
-            console.log("Peticion realizada");
+        error : function (){
+            console.log("Error Create New");
         }
     })
+    // Close Modal, Clean Inputs and Reload Datatable
     $('#CreateNewModal').modal('hide');
     $('#newtitle').val('');
     $('#newdescription').val('');
@@ -55,11 +52,11 @@ $('#savechangesButton').click(function(){
 
 // Edit New function
 $(document).ready(function(){
+    // Function Click Edit Button
     $('body').on('click', '.dropdown-menu a', function(){
       editnewnum=$(this).attr('editnewnum');
-      console.log(editnewnum);
-      if(editnewnum==undefined){
-         return;
+        if(editnewnum==undefined){
+            return;
         }
         else{
             $.ajax({
@@ -67,20 +64,45 @@ $(document).ready(function(){
                 type : 'GET',
                 dataType : 'json',
                 dataSrc:"",
-                error : function (data, error){
-                    console.log("Problema");
+                error : function (){
+                    console.log("Error Get New Data");
                 },
                 complete :  function (data){
-                    console.log("Peticion realizada");
+                    // old_data
                     old_title=data.responseJSON[0].title;
                     old_description=data.responseJSON[0].description;
                     old_content=data.responseJSON[0].content;
+
+                    // Show old data in Edit Modal
                     $("#editnewcontent").summernote('code', '');
                     $("#editnewcontent").summernote({focus: true});
                     $('#editnewtitle').val(old_title);
                     $('#editnewdescription').val(old_description);
                     $('#editnewcontent').summernote('pasteHTML', old_content);
-                    console.log(old_content);
+
+                    // Update New
+                    $('#editchangesButton').click(function(){
+                        editnewnum=data.responseJSON[0].idNew;
+
+                        var edit_title=$('#editnewtitle').val();
+                        var edit_description=$('#editnewdescription').val();
+                        var edit_content=$('#editnewcontent').summernote('code');
+                        $.ajax({
+                            url : 'ajax/set-news-datatable.php?editnewnum='+editnewnum+'&edittitle='+edit_title+'&editdescription='+edit_description+'&editcontent='+edit_content,
+                            type : 'GET',
+                            dataType : 'json',
+                            dataSrc:"",
+                            error : function (data, error){
+                                console.log("Problema");
+                            },
+                            complete :  function (data){
+                                console.log("Peticion realizada");
+                            }
+                        })
+                        // Close Edit Modal and Reload Datatable
+                        $('#EditNewModal').modal('hide');
+                        $('#NewsTable').DataTable().ajax.reload();
+                    });
                 }
             }) 
       }

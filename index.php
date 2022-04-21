@@ -53,10 +53,6 @@
                             <label>Description</label>
                             <textarea class="form-control" rows="3" placeholder="Enter description here..." id="newdescription"></textarea>
                         </div>
-                        <!-- <div id="Content">
-                            <label>Content</label>
-                            <div class="summernote" id="newcontent"></div>
-                        </div> -->
                         <div id="Content">
                             <label>Content</label>
                             <textarea class="summernote" id="newcontent"></textarea>
@@ -91,10 +87,6 @@
                             <label>Description</label>
                             <textarea class="form-control" rows="3" placeholder="Enter description here..." id="editnewdescription"></textarea>
                         </div>
-                        <!-- <div id="ContentEdit">
-                            <label>Content</label>
-                            <div class="summernote" id="editnewcontent"></div>
-                        </div> -->
                         <div id="ContentEdit">
                             <label>Content</label>
                             <textarea class="summernote" id="editnewcontent"></textarea>

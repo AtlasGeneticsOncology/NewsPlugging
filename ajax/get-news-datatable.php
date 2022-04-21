@@ -25,6 +25,7 @@ $numnew=1;
 
 while($row = $query_database->fetch_assoc()){
     $id[$cont]=$row['idNew'];
+    $news[$cont]['idNew']=$row['idNew'];
     $news[$cont]['title']=$row['title'];
     $news[$cont]['description']=$row['description'];
     $news[$cont]['content']=$row['content'];
