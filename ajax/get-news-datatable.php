@@ -10,13 +10,13 @@ $news = array();
 
 $idNew=$_REQUEST['idNew'];
 
-// if (isset($idNew) && !empty($idNew)){
+if (!empty($idNew)){
     
-//     $subquery=" WHERE idNew=".$idNew;
+    $subquery=" WHERE idNew=".$idNew;
 
-//     $query .= $subquery
+    $query .= $subquery;
 
-// }
+}
 
 $query_database = $connection->query($query);
 
@@ -26,6 +26,8 @@ $numnew=1;
 while($row = $query_database->fetch_assoc()){
     $id[$cont]=$row['idNew'];
     $news[$cont]['title']=$row['title'];
+    $news[$cont]['description']=$row['description'];
+    $news[$cont]['content']=$row['content'];
     $news[$cont]['actions']='
     <div class="dropdown show" style="text-align:center;">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

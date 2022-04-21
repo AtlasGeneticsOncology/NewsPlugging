@@ -48,6 +48,8 @@ $('#savechangesButton').click(function(){
     $('#CreateNewModal').modal('hide');
     $('#newtitle').val('');
     $('#newdescription').val('');
+    $("#newcontent").summernote('code', '');
+    $("#newcontent").summernote({focus: true});
     $('#NewsTable').DataTable().ajax.reload();
 });
 
@@ -55,6 +57,7 @@ $('#savechangesButton').click(function(){
 $(document).ready(function(){
     $('body').on('click', '.dropdown-menu a', function(){
       editnewnum=$(this).attr('editnewnum');
+      console.log(editnewnum);
       if(editnewnum==undefined){
          return;
         }
@@ -69,9 +72,17 @@ $(document).ready(function(){
                 },
                 complete :  function (data){
                     console.log("Peticion realizada");
+                    old_title=data.responseJSON[0].title;
+                    old_description=data.responseJSON[0].description;
+                    old_content=data.responseJSON[0].content;
+                    $("#editnewcontent").summernote('code', '');
+                    $("#editnewcontent").summernote({focus: true});
+                    $('#editnewtitle').val(old_title);
+                    $('#editnewdescription').val(old_description);
+                    $('#editnewcontent').summernote('pasteHTML', old_content);
+                    console.log(old_content);
                 }
             }) 
-            console.log(data.oldtitle);
       }
     })
   })

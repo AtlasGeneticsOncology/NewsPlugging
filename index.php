@@ -53,9 +53,13 @@
                             <label>Description</label>
                             <textarea class="form-control" rows="3" placeholder="Enter description here..." id="newdescription"></textarea>
                         </div>
-                        <div id="Content">
+                        <!-- <div id="Content">
                             <label>Content</label>
                             <div class="summernote" id="newcontent"></div>
+                        </div> -->
+                        <div id="Content">
+                            <label>Content</label>
+                            <textarea class="summernote" id="newcontent"></textarea>
                         </div>
                     </form>
                 </div>
@@ -87,14 +91,18 @@
                             <label>Description</label>
                             <textarea class="form-control" rows="3" placeholder="Enter description here..." id="editnewdescription"></textarea>
                         </div>
-                        <div id="ContentEdit">
+                        <!-- <div id="ContentEdit">
                             <label>Content</label>
                             <div class="summernote" id="editnewcontent"></div>
+                        </div> -->
+                        <div id="ContentEdit">
+                            <label>Content</label>
+                            <textarea class="summernote" id="editnewcontent"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                    
                     <input type="submit" class="btn btn-primary" id="editchangesButton" value="Save changes"></input>
                 </div>
             </div>
