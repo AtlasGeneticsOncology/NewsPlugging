@@ -45,8 +45,8 @@ $('#savechangesButton').click(function(){
     $('#CreateNewModal').modal('hide');
     $('#newtitle').val('');
     $('#newdescription').val('');
-    $("#newcontent").summernote('code', '');
-    $("#newcontent").summernote({focus: true});
+    $(".summernote").summernote('code', '');
+    $(".summernote").summernote({focus: true});
     $('#NewsTable').DataTable().ajax.reload();
 });
 
@@ -72,10 +72,10 @@ $(document).ready(function(){
                     old_title=data.responseJSON[0].title;
                     old_description=data.responseJSON[0].description;
                     old_content=data.responseJSON[0].content;
-
+                    
                     // Show old data in Edit Modal
-                    $("#editnewcontent").summernote('code', '');
-                    $("#editnewcontent").summernote({focus: true});
+                    $('#editnewcontent').summernote('code', '');
+                    $('#editnewcontent').summernote({focus: true});
                     $('#editnewtitle').val(old_title);
                     $('#editnewdescription').val(old_description);
                     $('#editnewcontent').summernote('pasteHTML', old_content);
