@@ -108,3 +108,53 @@ $(document).ready(function(){
       }
     })
   })
+
+// Delete New function
+
+$(document).ready(function(){
+    // Function Click Delete Button
+    $('body').on('click', '.dropdown-menu a', function(){
+      deletenewnum=$(this).attr('deletenewnum');
+        if(deletenewnum==undefined){
+            return;
+        }
+        else{
+            $.ajax({
+                url : 'ajax/get-news-datatable.php?idNew='+deletenewnum,
+                type : 'GET',
+                dataType : 'json',
+                dataSrc:"",
+                error : function (){
+                    console.log("Error Get New Data");
+                },
+                complete :  function (data){
+                    // delete new data
+                    delete_title=data.responseJSON[0].title;
+
+                    // Show delete new data in Delete Modal
+                    $('#delete_id').html(delete_title);
+
+                    // Delete New
+                    $('#deletechangesButton').click(function(){
+                        deletenewnum=data.responseJSON[0].idNew;
+                        $.ajax({
+                            url : 'ajax/set-news-datatable.php?deletenewnum='+deletenewnum,
+                            type : 'GET',
+                            dataType : 'json',
+                            dataSrc:"",
+                            error : function (){
+                                console.log("Error Delete New");
+                            },
+                            complete :  function (data){
+                                console.log("Peticion realizada");
+                            }
+                        })
+                        // Close Delete Modal and Reload Datatable
+                        $('#DeleteNewModal').modal('hide');
+                        $('#NewsTable').DataTable().ajax.reload();
+                    });
+                }
+            }) 
+      }
+    })
+  })

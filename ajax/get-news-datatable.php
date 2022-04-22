@@ -10,12 +10,21 @@ $news = array();
 
 $idNew=$_REQUEST['idNew'];
 
+$deleteNewNum=$_REQUEST['deletenewnum'];
+
 if (!empty($idNew)){
     
     $subquery=" WHERE idNew=".$idNew;
 
     $query .= $subquery;
 
+}
+
+if (!empty($deleteNewNum)){
+
+    $subquery=" WHERE idNew=".$deleteNewNum;
+
+    $query .= $subquery;
 }
 
 $query_database = $connection->query($query);
@@ -38,7 +47,7 @@ while($row = $query_database->fetch_assoc()){
             <a class="dropdown-item" href="#">Read</a>
             <a class="dropdown-item" href="#" class="editnewButton" data-toggle="modal" data-target="#EditNewModal" editnewnum="'.$id[$cont].'">Edit</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Delete</a>
+            <a class="dropdown-item" href="#" class="deletenewButton" data-toggle="modal" data-target="#DeleteNewModal" deletenewnum="'.$id[$cont].'">Delete</a>
         </div>
   </div>';
     $cont++;

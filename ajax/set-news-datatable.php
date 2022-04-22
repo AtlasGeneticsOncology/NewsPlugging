@@ -4,7 +4,9 @@ include 'conexion.php';
 
 $edit_new_num=$_REQUEST['editnewnum'];
 
-if(empty($edit_new_num)){
+$delete_new_num=$_REQUEST['deletenewnum'];
+
+if(empty($edit_new_num) && empty($delete_new_num)){
     $title=$_REQUEST['title'];
     $description=$_REQUEST['description'];
     $content=$_REQUEST['content'];
@@ -21,7 +23,7 @@ if(empty($edit_new_num)){
 
     $querydatabase=$connection->query($insert);
 }
-else{
+else if(!empty($edit_new_num)){
 
     //Edit News
 
@@ -36,10 +38,17 @@ else{
         $date_updated_at=$result_updated_at['NOW()'];
     }
 
-
     $update="UPDATE news SET title='".$edit_title."',description='".$edit_description."',content='".$edit_content."',updated_at='".$date_updated_at."' WHERE idNew='".$edit_new_num."'";
 
-    echo($update);
-
     $queryeditdatabase=$connection->query($update);
+}
+
+else if(!empty($delete_new_num)){
+
+    // Delete News
+
+    $delete="DELETE FROM news WHERE idNew='".$delete_new_num."'";
+
+    $querydeletedatabase=$connection->query($delete);
+
 }

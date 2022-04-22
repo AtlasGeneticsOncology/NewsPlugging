@@ -101,6 +101,31 @@
         </div>
     </div>
 
+    <!-- Delete New Modal -->
+    <div class="modal fade" id="DeleteNewModal" tabindex="-1" role="dialog" aria-labelledby="DeleteNewModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle">⚠ Delete New</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="allform">
+                        <div class="form-group">
+                            <p>Are you sure you want to delete new <strong id="delete_id"></strong> ?</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>                    
+                    <input type="submit" class="btn btn-danger" id="deletechangesButton" value="Delete"></input>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap DataTable JS -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="news.js"></script>
