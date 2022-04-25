@@ -29,6 +29,7 @@ $(document).ready(function() {
 // Create New function
 $('#savechangesButton').click(function(){
     // Inputs values
+    $(".summernote").summernote('triggerEvent', 'change');
     var title=$('#newtitle').val();
     var description=$('#newdescription').val();
     var content=$('#newcontent').summernote('code');
@@ -49,6 +50,7 @@ $('#savechangesButton').click(function(){
     $(".summernote").summernote({focus: true});
     $('#NewsTable').DataTable().ajax.reload();
 });
+
 
 // Edit New function
 $(document).ready(function(){
@@ -113,6 +115,7 @@ $(document).ready(function(){
                         editnewnum=null;
                         $('#EditNewModal').modal('hide');
                         $('#NewsTable').DataTable().ajax.reload();
+
                     });
                 }
             }) 

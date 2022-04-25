@@ -78,7 +78,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="allform">
+                    <form id="editform">
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" class="form-control" placeholder="Enter title here..." id="editnewtitle">
