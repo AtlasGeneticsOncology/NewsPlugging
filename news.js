@@ -55,6 +55,7 @@ $(document).ready(function(){
     // Function Click Edit Button
     $('body').on('click', '.dropdown-menu a', function(){
       editnewnum=$(this).attr('editnewnum');
+    //   console.log(editnewnum);
         if(editnewnum==undefined){
             return;
         }
@@ -67,12 +68,13 @@ $(document).ready(function(){
                 error : function (){
                     console.log("Error Get New Data");
                 },
-                complete :  function (data){
+                success : function(data){
                     // old_data
-                    old_title=data.responseJSON[0].title;
-                    old_description=data.responseJSON[0].description;
-                    old_content=data.responseJSON[0].content;
-                    
+                    editnewnum=data[0].idNew;
+                    old_title=data[0].title;
+                    old_description=data[0].description;
+                    old_content=data[0].content;
+
                     // Show old data in Edit Modal
                     $('#editnewcontent').summernote('code', '');
                     $('#editnewcontent').summernote({focus: true});
@@ -80,13 +82,21 @@ $(document).ready(function(){
                     $('#editnewdescription').val(old_description);
                     $('#editnewcontent').summernote('pasteHTML', old_content);
 
+                    // Delete var editnewnum when close modal
+                    $('#closeedit').click(editnewnum,function(){
+                        console.log('Cerrar');
+                        editnewnum=null;
+                        return;
+                    });
+
                     // Update New
-                    $('#editchangesButton').click(function(){
-                        editnewnum=data.responseJSON[0].idNew;
+                    $('#editchangesButton').click(editnewnum,function(){
+                        console.log(editnewnum);
 
                         var edit_title=$('#editnewtitle').val();
                         var edit_description=$('#editnewdescription').val();
                         var edit_content=$('#editnewcontent').summernote('code');
+
                         $.ajax({
                             url : 'ajax/set-news-datatable.php?editnewnum='+editnewnum+'&edittitle='+edit_title+'&editdescription='+edit_description+'&editcontent='+edit_content,
                             type : 'GET',
@@ -100,6 +110,7 @@ $(document).ready(function(){
                             }
                         })
                         // Close Edit Modal and Reload Datatable
+                        editnewnum=null;
                         $('#EditNewModal').modal('hide');
                         $('#NewsTable').DataTable().ajax.reload();
                     });
@@ -127,16 +138,16 @@ $(document).ready(function(){
                 error : function (){
                     console.log("Error Get New Data");
                 },
-                complete :  function (data){
+                success : function (data){
                     // delete new data
-                    delete_title=data.responseJSON[0].title;
+                    delete_title=data[0].title;
 
                     // Show delete new data in Delete Modal
                     $('#delete_id').html(delete_title);
 
                     // Delete New
                     $('#deletechangesButton').click(function(){
-                        deletenewnum=data.responseJSON[0].idNew;
+                        deletenewnum=data[0].idNew;
                         $.ajax({
                             url : 'ajax/set-news-datatable.php?deletenewnum='+deletenewnum,
                             type : 'GET',
