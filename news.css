@@ -1,0 +1,12 @@
+#table-container{
+    width:90%;
+    margin:auto;
+    margin-top:5%;
+}
+
+#CreateNew{
+    margin-bottom:2%;
+}
+#NewsTable tbody th, #NewsTable tbody td {
+    padding: 8px 10px;
+}
