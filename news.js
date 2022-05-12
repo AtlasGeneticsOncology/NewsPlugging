@@ -22,7 +22,15 @@ $(document).ready(function() {
         tabsize: 2,
         height: 200,
         dialogsInBody: true,
-        tooltip: false
+        tooltip: false,
+        toolbar: [
+            ['style', ['style','bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['insert', [ 'ajaxfileupload', 'link','table']],
+            ['misc', ['codeview']]
+          ]
     });
 });
 
